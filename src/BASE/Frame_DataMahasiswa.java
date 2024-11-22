@@ -4,17 +4,23 @@
  */
 package BASE;
 
+import Database.DatabaseInstance;
+import Database.DatabaseResultResponse;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 23106
  */
 public class Frame_DataMahasiswa extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Frame_DataMahasiswa
-     */
+    DatabaseInstance db;
+    
     public Frame_DataMahasiswa() {
         initComponents();
+        setLocationRelativeTo(null);
+        db = new DatabaseInstance();
+        setTitle("Manajemen Kas Kelas By 3E Informatika Unsika");
     }
 
     /**
@@ -32,6 +38,7 @@ public class Frame_DataMahasiswa extends javax.swing.JFrame {
         ComboboxJenisKelamin = new javax.swing.JComboBox<>();
         btnSIMPAN = new javax.swing.JButton();
         btnKEMBALI = new javax.swing.JButton();
+        btnKEMBALI1 = new javax.swing.JButton();
         labelDataMahasiswa = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,12 +62,17 @@ public class Frame_DataMahasiswa extends javax.swing.JFrame {
         getContentPane().add(txtNAMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, 250, 50));
 
         ComboboxJenisKelamin.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        ComboboxJenisKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki Laki", "Perempuan", "" }));
-        getContentPane().add(ComboboxJenisKelamin, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 270, 190, 50));
+        ComboboxJenisKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-laki", "Perempuan", " " }));
+        getContentPane().add(ComboboxJenisKelamin, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 270, 270, 50));
 
         btnSIMPAN.setBackground(new java.awt.Color(204, 204, 204));
         btnSIMPAN.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         btnSIMPAN.setText("SIMPAN");
+        btnSIMPAN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSIMPANActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSIMPAN, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 550, 140, 60));
 
         btnKEMBALI.setBackground(new java.awt.Color(204, 204, 255));
@@ -71,10 +83,20 @@ public class Frame_DataMahasiswa extends javax.swing.JFrame {
                 btnKEMBALIActionPerformed(evt);
             }
         });
-        getContentPane().add(btnKEMBALI, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 550, 140, 60));
+        getContentPane().add(btnKEMBALI, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 560, 140, 50));
+
+        btnKEMBALI1.setBackground(new java.awt.Color(204, 204, 255));
+        btnKEMBALI1.setFont(new java.awt.Font("Sylfaen", 3, 18)); // NOI18N
+        btnKEMBALI1.setText("Rekap Mahasiswa");
+        btnKEMBALI1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKEMBALI1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnKEMBALI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 450, 180, 60));
 
         labelDataMahasiswa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI_componen_asset/frame Data Mahasiswa.png"))); // NOI18N
-        getContentPane().add(labelDataMahasiswa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 700));
+        getContentPane().add(labelDataMahasiswa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -84,8 +106,42 @@ public class Frame_DataMahasiswa extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNAMAActionPerformed
 
     private void btnKEMBALIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKEMBALIActionPerformed
-        // TODO add your handling code here:
+        new Frame_MenuUtama().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnKEMBALIActionPerformed
+
+    private void btnSIMPANActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSIMPANActionPerformed
+        String nim = txtNIM.getText();
+        String name = txtNAMA.getText();
+        String noPhone = txtNOHP.getText();
+        String gender = ComboboxJenisKelamin.getSelectedItem().toString().toLowerCase();
+        
+        if(nim.equals("") || noPhone.equals("") || name.equals("") || gender.equals("")) {
+            JOptionPane.showMessageDialog(this, "Tolong Isi Form dengan Benar!");
+            return;
+        };
+        
+        try {
+            DatabaseResultResponse response = db.addMahasiswa(nim, name, noPhone, gender);
+            if(response.status == 200) {
+                JOptionPane.showMessageDialog(this, response.message);
+                txtNIM.setText("");
+                txtNAMA.setText("");
+                txtNOHP.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "Gagal Menambahkan Data\nMahasiswa!");
+            }
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(this, e.getMessage());
+        }
+        
+        
+    }//GEN-LAST:event_btnSIMPANActionPerformed
+
+    private void btnKEMBALI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKEMBALI1ActionPerformed
+        new Frame_RekapMahasiswa().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnKEMBALI1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,6 +181,7 @@ public class Frame_DataMahasiswa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboboxJenisKelamin;
     private javax.swing.JButton btnKEMBALI;
+    private javax.swing.JButton btnKEMBALI1;
     private javax.swing.JButton btnSIMPAN;
     private javax.swing.JLabel labelDataMahasiswa;
     private javax.swing.JTextField txtNAMA;

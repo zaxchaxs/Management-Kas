@@ -15,6 +15,8 @@ public class Frame_MenuUtama extends javax.swing.JFrame {
      */
     public Frame_MenuUtama() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Manajemen Kas Kelas By 3E Informatika Unsika");
     }
 
     /**
@@ -26,21 +28,82 @@ public class Frame_MenuUtama extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        btnDataMahasiswa = new javax.swing.JButton();
+        btnPembayaanKas = new javax.swing.JButton();
+        btnJumlahSaldo = new javax.swing.JButton();
+        btnLOGOUT = new javax.swing.JButton();
+        labelMenuUtama = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnDataMahasiswa.setBackground(new java.awt.Color(51, 255, 255));
+        btnDataMahasiswa.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        btnDataMahasiswa.setText("Data Mahasiswa");
+        btnDataMahasiswa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDataMahasiswaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDataMahasiswa, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 210, 40));
+
+        btnPembayaanKas.setBackground(new java.awt.Color(255, 255, 102));
+        btnPembayaanKas.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        btnPembayaanKas.setText("Pembayaran Kas");
+        btnPembayaanKas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPembayaanKasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPembayaanKas, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 420, 210, 40));
+
+        btnJumlahSaldo.setBackground(new java.awt.Color(204, 0, 204));
+        btnJumlahSaldo.setFont(new java.awt.Font("Times New Roman", 3, 16)); // NOI18N
+        btnJumlahSaldo.setText("Jumlah Saldo");
+        btnJumlahSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJumlahSaldoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnJumlahSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 420, 170, 40));
+
+        btnLOGOUT.setBackground(new java.awt.Color(255, 0, 0));
+        btnLOGOUT.setFont(new java.awt.Font("Times New Roman", 3, 16)); // NOI18N
+        btnLOGOUT.setForeground(new java.awt.Color(255, 255, 255));
+        btnLOGOUT.setText("LOG OUT");
+        btnLOGOUT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLOGOUTActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLOGOUT, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 540, 160, 40));
+
+        labelMenuUtama.setFont(new java.awt.Font("Times New Roman", 3, 16)); // NOI18N
+        labelMenuUtama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI_componen_asset/3.png"))); // NOI18N
+        getContentPane().add(labelMenuUtama, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPembayaanKasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPembayaanKasActionPerformed
+        new Frame_PembayaranKas().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnPembayaanKasActionPerformed
+
+    private void btnDataMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataMahasiswaActionPerformed
+        new Frame_DataMahasiswa().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnDataMahasiswaActionPerformed
+
+    private void btnJumlahSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJumlahSaldoActionPerformed
+        new Frame_JumlahSaldo().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnJumlahSaldoActionPerformed
+
+    private void btnLOGOUTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLOGOUTActionPerformed
+        new Frame_login().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnLOGOUTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -68,6 +131,21 @@ public class Frame_MenuUtama extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Frame_MenuUtama.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -78,5 +156,10 @@ public class Frame_MenuUtama extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDataMahasiswa;
+    private javax.swing.JButton btnJumlahSaldo;
+    private javax.swing.JButton btnLOGOUT;
+    private javax.swing.JButton btnPembayaanKas;
+    private javax.swing.JLabel labelMenuUtama;
     // End of variables declaration//GEN-END:variables
 }
